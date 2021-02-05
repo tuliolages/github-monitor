@@ -10,10 +10,12 @@ class RepositorySerializer(serializers.ModelSerializer):
         fields = ('name',)
 
     def validate(self, data):
-        repository_data = get_repository(repository_name=data["name"])
 
-        if repository_data.status_code != 200:
-            raise serializers.ValidationError("Invalid repository")
+        repository = Repository.objects.filter(name=data["name"]).first()
+        if repository is not None:
+            raise serializers.ValidationError("Repository already added previously")
+
+        repository_data = get_repository(repository_name=data["name"])
 
         return data
 
