@@ -23,7 +23,7 @@ class RepositoryCreate(generics.CreateAPIView):
 
         # TODO move this commit creation elsewhere and deal with commits without author and avatar
         commits = list(map(lambda entry: {
-            'author': entry['author']['name'] if entry['author'] else 'unknown',
+            'author': entry['author']['login'] if entry['author'] else 'unknown',
             'avatar': entry['author']['avatar_url'] if entry['author'] else '',
             'url': entry['url'],
             'sha': entry['sha'],

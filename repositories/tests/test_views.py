@@ -24,7 +24,7 @@ class RepositoryCreateViewTests(TestCase):
             "sha": "dd0c469c1b61ec0dc7144405237ea87072a4bda2",
             "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/dd0c469c1b61ec0dc7144405237ea87072a4bda2",
             "author": {
-                "name": "author_1",
+                "login": "author_1",
                 "avatar_url": "http://avatar.com"
             },
             "commit": { 
@@ -35,7 +35,7 @@ class RepositoryCreateViewTests(TestCase):
             "sha": "ad0c469c1b61ec0dc7144405237ea87072a4bda2",
             "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/ad0c469c1b61ec0dc7144405237ea87072a4bda2",
             "author": {
-                "name": "author_1",
+                "login": "author_1",
                 "avatar_url": "http://avatar.com"
             },
             "commit": { 
