@@ -11,11 +11,20 @@ class RepositorySerializer(serializers.ModelSerializer):
 
     def validate(self, data):
 
-        repository = Repository.objects.filter(name=data["name"]).first()
+        current_user = self.context['request'].user
+
+        repository = Repository.objects.filter(
+            name=data["name"],
+            owner_id=current_user.id
+        ).first()
+
         if repository is not None:
             raise serializers.ValidationError("Repository already added previously")
 
-        repository_data = get_repository(repository_name=data["name"])
+        repository_data = get_repository(
+            repository_name=data["name"],
+            username=current_user.username
+        )
 
         return data
 

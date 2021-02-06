@@ -14,18 +14,17 @@ class RepositoryCreate(generics.CreateAPIView):
     serializer_class = RepositorySerializer
 
     def perform_create(self, serializer):
-        repository = serializer.save()
+        repository = serializer.save(owner_id=self.request.user.id)
         
-        # TODO move this commit creation elsewhere
+        # TODO move this commit creation elsewhere and deal with commits without author and avatar
         commits = list(map(lambda entry: {
-            'author': entry['author']['login'],
-            'avatar': entry['author']['avatar_url'],
+            'author': entry['author']['name'] if entry['author'] else 'unknown',
+            'avatar': entry['author']['avatar_url'] if entry['author'] else '',
             'url': entry['url'],
             'sha': entry['sha'],
             'message': entry['commit']['message'],
             'date': entry['commit']['author']['date']
-        }, get_commits(repository_name=repository.name)))
-
+        }, get_commits(repository_name=repository.name, username=self.request.user.username)))
         serializer = CommitSerializer(data=commits, many=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(repository_id=repository.id)
