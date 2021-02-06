@@ -1,0 +1,118 @@
+[
+    {
+        "model": "repositories.commit",
+        "pk": 13,
+        "fields": {
+            "message": "move commits payload to correct method",
+            "sha": "70acdb89aede36a17baa234017a423447454fb80",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/70acdb89aede36a17baa234017a423447454fb80",
+            "date": "2021-02-05T03:06:00Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "repositories.commit",
+        "pk": 14,
+        "fields": {
+            "message": "update commit retireval procedure to get only commits from the last 30 days",
+            "sha": "58f0fe0bee261cbb7c0dcaff729493252ed62a1e",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/58f0fe0bee261cbb7c0dcaff729493252ed62a1e",
+            "date": "2021-02-05T02:50:35Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "repositories.commit",
+        "pk": 15,
+        "fields": {
+            "message": "refactor github api wrapper, add commit retrieval and addsfiltering to commits endpoint",
+            "sha": "4700ff6f8914ee82036727fd83b3a16efdb12cc3",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/4700ff6f8914ee82036727fd83b3a16efdb12cc3",
+            "date": "2021-02-05T02:13:35Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "repositories.commit",
+        "pk": 16,
+        "fields": {
+            "message": "create a wrapper to the github api and validates if the repository exists upon creation",
+            "sha": "dd0c469c1b61ec0dc7144405237ea87072a4bda2",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/dd0c469c1b61ec0dc7144405237ea87072a4bda2",
+            "date": "2021-02-04T01:27:12Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "repositories.commit",
+        "pk": 17,
+        "fields": {
+            "message": "refactor repository and commit endpoints to be class based",
+            "sha": "a32ad41bfaae37deae9aea848c6fd9cb765852f3",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/a32ad41bfaae37deae9aea848c6fd9cb765852f3",
+            "date": "2021-02-04T01:10:59Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "repositories.commit",
+        "pk": 18,
+        "fields": {
+            "message": "update docker-compose file so the project can be executed",
+            "sha": "ed452cf753026f44c269a55bfa3d44f440025a73",
+            "author": "unknown",
+            "url": "https://api.github.com/repos/tuliolages/github-monitor/commits/ed452cf753026f44c269a55bfa3d44f440025a73",
+            "date": "2021-02-04T00:35:44Z",
+            "avatar": "",
+            "repository": 12
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "!D139RiLoxDtsXrhrJuygOa0PLT4oy2tQNQswHJH1",
+            "last_login": "2021-02-06T02:40:21.815Z",
+            "is_superuser": true,
+            "username": "tuliolages",
+            "first_name": "T\u00falio",
+            "last_name": "Paulo Lages da Silva",
+            "email": "tulio.plds@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-02-06T02:40:21.741Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "social_django.usersocialauth",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "provider": "github",
+            "uid": "3356713",
+            "extra_data": "{\"auth_time\": 1612579221, \"id\": 3356713, \"expires\": null, \"login\": \"tuliolages\", \"access_token\": \"46ffa3f1a9c0b6ff537839b5d5fa0b99cee7fb41\", \"token_type\": \"bearer\"}",
+            "created": "2021-02-06T02:40:21.760Z",
+            "modified": "2021-02-06T02:40:21.770Z"
+        }
+    },
+    {
+        "model": "repositories.repository",
+        "pk": 12,
+        "fields": {
+            "name": "github-monitor",
+            "owner": 1
+        }
+    }
+]

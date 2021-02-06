@@ -1,0 +1,60 @@
+todo
+
+http://www.cdrf.co/
+
+backend
+get commits - task
+model/serializer tests
+view tests
+refactor github_api validations (serializers? models? oe views?)
+lidar com contas nao associadas ao github (nao vem author nem commiter) WIP
+get commits OK
+filter/paginate commits OK
+parametrize repo owner name @ github_api OK
+repo name when repeats? OK
+por parametro de tempo na request de commits do github OK
+
+frontend
+list repos
+list commits
+filter commits
+tests
+
+
+
+
+
+questions:
+autor: login ou nome?
+verificar existencia: só no banco ou tbm no github?
+lidar com repositorios com mesmo nome de outras pessoas agora ou deixar pra depois?
+
+
+
+
+testes:
+    serializers:
+    
+
+    models:
+
+
+    views:
+        save repo
+            new valid repo
+            already exists
+            same name but different users (so, valid)
+            don't exist @ github
+        
+        list commits
+            test valid
+            test pagination?
+            test empty
+            test not existing repository
+
+        get new repo commits
+            github error
+            valid
+            no author avatar/login
+    
+    github_api:

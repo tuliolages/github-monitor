@@ -16,6 +16,11 @@ class RepositoryCreate(generics.CreateAPIView):
     def perform_create(self, serializer):
         repository = serializer.save(owner_id=self.request.user.id)
         
+        latest_commits = get_commits(repository_name=repository.name, username=self.request.user.username)
+        if latest_commits is None:
+            latest_commits = []
+            # TODO do somethind
+
         # TODO move this commit creation elsewhere and deal with commits without author and avatar
         commits = list(map(lambda entry: {
             'author': entry['author']['name'] if entry['author'] else 'unknown',
@@ -24,7 +29,7 @@ class RepositoryCreate(generics.CreateAPIView):
             'sha': entry['sha'],
             'message': entry['commit']['message'],
             'date': entry['commit']['author']['date']
-        }, get_commits(repository_name=repository.name, username=self.request.user.username)))
+        }, latest_commits))
         serializer = CommitSerializer(data=commits, many=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(repository_id=repository.id)

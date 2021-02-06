@@ -26,6 +26,9 @@ class RepositorySerializer(serializers.ModelSerializer):
             username=current_user.username
         )
 
+        if repository_data is None:
+            raise serializers.ValidationError("Repository does not exist")
+
         return data
 
 
