@@ -12,19 +12,29 @@ class CommitListContainer extends React.Component {
 
   handlePageClick({selected}) {
     commitAPI.getCommits({
-      page: (selected + 1)
+      page: (selected + 1),
+      author: this.props.author,
+      repository__name: this.props.repository
+    })
+  }
+
+  updateFilters(filterParams) {
+    commitAPI.getCommits({
+      ...filterParams,
+      page: 1
     })
   }
 
   render() {
-    const {commits, count, pageSize} = this.props;
+    const {commits, count, pageSize, page} = this.props;
     return (
       <div>
-        <CommitList commits={commits} />
+        <CommitList commits={commits} updateFilters={this.updateFilters.bind(this)}/>
         <ReactPaginate
           pageCount={Math.ceil(count/pageSize)}
           pageRangeDisplayed={2}
-          onPageChange={this.handlePageClick}
+          onPageChange={this.handlePageClick.bind(this)}
+          forcePage={page-1}
           breakLinkClassName={'page-link'}
           containerClassName={'pagination'}
           pageClassName={'page-item'}
@@ -43,13 +53,19 @@ class CommitListContainer extends React.Component {
 CommitListContainer.propTypes = {
   commits: PropTypes.arrayOf(PropTypes.object).isRequired,
   count: PropTypes.number.isRequired,
-  pageSize: PropTypes.number.isRequired
+  pageSize: PropTypes.number.isRequired,
+  repository: PropTypes.string,
+  author: PropTypes.string,
+  page: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = store => ({
   commits: store.commitState.commits,
   count: store.commitState.count,
   pageSize: store.commitState.pageSize,
+  repository: store.commitState.repository,
+  author: store.commitState.author,
+  page: store.commitState.page
 });
 
 export default connect(mapStateToProps)(CommitListContainer);

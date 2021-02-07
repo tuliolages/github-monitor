@@ -4,7 +4,10 @@ const initialState = {
   commits: [],
   count: 0,
   pageSize: 10,
+  page: 1,
   successMessage: false,
+  repository: null,
+  author: null
 };
 
 const commitReducer = (state = initialState, action) => {
@@ -14,7 +17,10 @@ const commitReducer = (state = initialState, action) => {
         ...state,
         commits: Object.values(action.payload.results),
         pageSize: action.payload.page_size,
-        count: action.payload.count
+        page: action.payload.page || 1,
+        count: action.payload.count,
+        repository: action.payload.repository__name,
+        author: action.payload.author
       };
     case types.CREATE_REPOSITORY_SUCCESS: {
       return {...state, successMessage: action.payload.successMessage};

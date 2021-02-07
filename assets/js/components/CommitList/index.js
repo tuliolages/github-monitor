@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CommitList = (props) => {
-  const {commits} = props;
+  const {commits,updateFilters} = props;
   return (
     <div>
       {commits.length !== 0 && (
@@ -23,13 +23,13 @@ const CommitList = (props) => {
                       {commit.message}
                     </p>
                     <small className="text-muted">
-                      {commit.author}
+                      <span onClick={() => updateFilters({author: commit.author})}>{commit.author}</span>
                       {' '}
                       authored
                       {' '}
                       on
                       {' '}
-                      {commit.repository}
+                      <span onClick={() => updateFilters({repository__name: commit.repository})}>{commit.repository}</span>
                       {' '}
                       at
                       {' '}
@@ -49,6 +49,7 @@ const CommitList = (props) => {
 
 CommitList.propTypes = {
   commits: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateFilters: PropTypes.func.isRequired,
 };
 
 export default CommitList;

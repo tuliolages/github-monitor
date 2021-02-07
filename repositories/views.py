@@ -39,4 +39,4 @@ class CommitList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Commit.objects.all()
     serializer_class = CommitSerializer
-    filterset_fields = ['author', 'repository']
+    filterset_fields = ['author', 'repository__name']
