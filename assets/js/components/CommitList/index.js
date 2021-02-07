@@ -23,13 +23,13 @@ const CommitList = (props) => {
                       {commit.message}
                     </p>
                     <small className="text-muted">
-                      <span class="filter-link" onClick={() => updateFilters({author: commit.author})}>{commit.author}</span>
+                      <span className="filter-link" onClick={() => updateFilters({author: commit.author})}>{commit.author}</span>
                       {' '}
                       authored
                       {' '}
                       on
                       {' '}
-                      <span class="filter-link" onClick={() => updateFilters({repository__name: commit.repository})}>{commit.repository}</span>
+                      <span className="filter-link" onClick={() => updateFilters({repository__name: commit.repository})}>{commit.repository}</span>
                       {' '}
                       at
                       {' '}
