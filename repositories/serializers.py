@@ -47,6 +47,21 @@ class CommitSerializer(serializers.ModelSerializer):
             'repository',
         )
 
+class CommitCreateSerializer(serializers.ModelSerializer):
+    repository = serializers.StringRelatedField(many=False)
+
+    class Meta:
+        model = Commit
+        fields = (
+            'message',
+            'sha',
+            'author',
+            'url',
+            'avatar',
+            'date',
+            'repository',
+        )
+
 class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:

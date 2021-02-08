@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Commit, Repository
-from .serializers import AuthorSerializer, CommitSerializer, RepositorySerializer
+from .serializers import AuthorSerializer, CommitSerializer, RepositorySerializer, CommitCreateSerializer
 from .github_api import get_commits
 
 
@@ -33,7 +33,7 @@ class RepositoryListCreate(generics.ListCreateAPIView):
             'message': entry['commit']['message'],
             'date': entry['commit']['author']['date']
         }, latest_commits))
-        serializer = CommitSerializer(data=commits, many=True)
+        serializer = CommitCreateSerializer(data=commits, many=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(repository_id=repository.id)
 
