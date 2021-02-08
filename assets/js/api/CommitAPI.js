@@ -26,6 +26,8 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
     store.dispatch(createRepositorySuccess(response.data, true));
     formDispatch(reset('repoCreate'));
     getCommits()
+    getRepositories()
+    getAuthors()
   }).catch((error) => {
     const err = error.response;
     console.log(err);
