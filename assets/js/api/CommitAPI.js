@@ -3,7 +3,7 @@ import { reset } from 'redux-form';
 import store from '../store';
 import {
   createRepositorySuccess, getCommitsSuccess, updateCommitsFilters,
-  getRepositoriesSuccess, getAuthorsSuccess
+  getRepositoriesSuccess, getAuthorsSuccess, createRepositoryError
 } from '../actions/CommitActions';
 
 export const getCommits = (params) => axios.get(`/api/commits/`, { params })
@@ -31,6 +31,7 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
   }).catch((error) => {
     const err = error.response;
     console.log(err);
+    store.dispatch(createRepositoryError(err.data, true));
   });
 
 function updateCommitsFiltersFormDispatcher(filterFields) {

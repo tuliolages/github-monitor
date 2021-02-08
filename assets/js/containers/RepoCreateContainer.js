@@ -14,17 +14,28 @@ class RepoCreateContainer extends React.Component {
   };
 
   render() {
-    const {successMessage} = this.props;
-    return <Form onSubmit={this.submit} successMessage={successMessage} />;
+    const {showSuccessMessage, showErrorMessage, errorMessages} = this.props;
+    return (
+    <Form 
+      onSubmit={this.submit}
+      showSuccessMessage={showSuccessMessage}
+      showErrorMessage={showErrorMessage}
+      errorMessages={errorMessages}
+    />
+    );
   }
 }
 
 RepoCreateContainer.propTypes = {
-  successMessage: PropTypes.bool.isRequired,
+  showSuccessMessage: PropTypes.bool.isRequired,
+  showErrorMessage: PropTypes.bool.isRequired,
+  errorMessages: PropTypes.arrayOf(PropTypes.string),
 };
 
 const mapStateToProps = store => ({
-  successMessage: store.commitState.successMessage,
+  showSuccessMessage: store.commitState.showSuccessMessage,
+  showErrorMessage: store.commitState.showErrorMessage,
+  errorMessages: store.commitState.errorMessages,
 });
 
 export default connect(mapStateToProps)(RepoCreateContainer);

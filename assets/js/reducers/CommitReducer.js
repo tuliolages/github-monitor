@@ -5,7 +5,9 @@ const initialState = {
   count: 0,
   pageSize: 10,
   page: 1,
-  successMessage: false,
+  showSuccessMessage: false,
+  showErrorMessage: false,
+  errorMessages: null,
   repository: null,
   author: null
 };
@@ -20,7 +22,20 @@ const commitReducer = (state = initialState, action) => {
         count: action.payload.count,
       };
     case types.CREATE_REPOSITORY_SUCCESS: {
-      return {...state, successMessage: action.payload.successMessage};
+      return {
+        ...state,
+        showSuccessMessage: action.payload.showSuccessMessage,
+        errorMessages: null,
+        showErrorMessage: false
+      };
+    }
+    case types.CREATE_REPOSITORY_ERROR: {
+      return {
+        ...state,
+        showErrorMessage: action.payload.showErrorMessage,
+        errorMessages: action.payload.response.non_field_errors,
+        showSuccessMessage: false
+      };
     }
     case types.UPDATE_COMMITS_FILTERS:
       return {
