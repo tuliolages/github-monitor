@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as commitAPI from '../api/CommitAPI';
-import Form from '../components/CommitFilterForm';
+import CommitFilter from '../components/CommitFilter';
 
 class CommitFilterContainer extends React.Component {
     componentDidMount() {
@@ -23,7 +23,8 @@ class CommitFilterContainer extends React.Component {
         const {author, authors,repository, repositories} = this.props
         return (
             <div>
-                <Form author={author}
+                <CommitFilter 
+                    author={author}
                     authors={authors}
                     repository={repository}
                     repositories={repositories}
@@ -43,9 +44,9 @@ CommitFilterContainer.propTypes = {
 
 const mapStateToProps = store => ({
     repository: store.commitState.repository,
-    repositories: store.repositoryState.repositories,
+    repositories: store.commitsFilterState.repositories,
     author: store.commitState.author,
-    authors: store.repositoryState.authors,
+    authors: store.commitsFilterState.authors,
 });
 
 export default connect(mapStateToProps)(CommitFilterContainer);

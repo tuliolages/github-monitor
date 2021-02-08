@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select'
 
 
-const CommitFilterForm = (props) => {
+const CommitFilter = (props) => {
   const { repository, repositories, author, authors } = props
 
   const repositoryOptions = [
@@ -47,7 +47,7 @@ const CommitFilterForm = (props) => {
   );
 };
 
-CommitFilterForm.propTypes = {
+CommitFilter.propTypes = {
   repository: PropTypes.number,
   repositories: PropTypes.arrayOf(PropTypes.object).isRequired,
   onChange: PropTypes.func.isRequired,
@@ -55,4 +55,4 @@ CommitFilterForm.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default CommitFilterForm;
+export default CommitFilter;

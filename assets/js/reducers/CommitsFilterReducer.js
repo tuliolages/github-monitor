@@ -5,7 +5,7 @@ const initialState = {
   authors: []
 };
 
-const repositoryReducer = (state = initialState, action) => {
+const commitsFilterReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_REPOSITORIES_SUCCESS:
       return {
@@ -22,4 +22,4 @@ const repositoryReducer = (state = initialState, action) => {
   }
 };
 
-export default repositoryReducer;
+export default commitsFilterReducer;

@@ -3,13 +3,13 @@ import {reducer as formReducer} from 'redux-form';
 
 // Reducers
 import commitReducer from './CommitReducer';
-import repositoryReducer from './RepositoriesReducer';
+import commitsFilterReducer from './CommitsFilterReducer';
 
 // Combine Reducers
 const reducers = combineReducers({
   form: formReducer,
   commitState: commitReducer,
-  repositoryState: repositoryReducer
+  commitsFilterState: commitsFilterReducer
 });
 
 export default reducers;
