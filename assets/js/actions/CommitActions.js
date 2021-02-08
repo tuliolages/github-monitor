@@ -10,6 +10,11 @@ export const getRepositoriesSuccess = response => ({
   payload: response,
 });
 
+export const getAuthorsSuccess = response => ({
+  type: types.GET_AUTHORS_SUCCESS,
+  payload: response,
+});
+
 export const getCommitsSuccess = response => ({
   type: types.GET_COMMITS_SUCCESS,
   payload: response,

@@ -46,3 +46,11 @@ class CommitSerializer(serializers.ModelSerializer):
             'date',
             'repository',
         )
+
+class AuthorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Commit
+        fields = (
+            'author',
+        )

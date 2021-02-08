@@ -13,8 +13,6 @@ const initialState = {
 const commitReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_COMMITS_SUCCESS:
-      // console.log('GET_COMMITS_SUCCESS')
-      // console.log(action.payload.results)
       return {
         ...state,
         commits: Object.values(action.payload.results),
@@ -25,7 +23,6 @@ const commitReducer = (state = initialState, action) => {
       return {...state, successMessage: action.payload.successMessage};
     }
     case types.UPDATE_COMMITS_FILTERS:
-      console.log('UPDATE_COMMITS_FILTERS')
       return {
         ...state,
         ...action.payload

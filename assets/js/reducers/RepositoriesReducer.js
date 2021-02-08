@@ -1,7 +1,8 @@
 import * as types from '../actions/ActionTypes';
 
 const initialState = {
-  repositories: []
+  repositories: [],
+  authors: []
 };
 
 const repositoryReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const repositoryReducer = (state = initialState, action) => {
       return {
         ...state,
         repositories: Object.values(action.payload.data),
+      };
+    case types.GET_AUTHORS_SUCCESS:
+      return {
+        ...state,
+        authors: Object.values(action.payload.data),
       };
     default:
       return state;

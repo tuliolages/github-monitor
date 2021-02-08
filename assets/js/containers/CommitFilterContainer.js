@@ -7,11 +7,11 @@ import Form from '../components/CommitFilterForm';
 class CommitFilterContainer extends React.Component {
     componentDidMount() {
         commitAPI.getRepositories();
+        commitAPI.getAuthors();
     }
 
     updateFilters(field) {
         return ({value}) => {
-            console.log(field, value)
             commitAPI.updateCommitsFiltersForm({
                 [field]: value,
                 page: 1
@@ -20,10 +20,11 @@ class CommitFilterContainer extends React.Component {
     }
 
     render() {
-        const {author,repository, repositories} = this.props
+        const {author, authors,repository, repositories} = this.props
         return (
             <div>
                 <Form author={author}
+                    authors={authors}
                     repository={repository}
                     repositories={repositories}
                     onChange={this.updateFilters.bind(this)}
@@ -34,15 +35,17 @@ class CommitFilterContainer extends React.Component {
 }
 
 CommitFilterContainer.propTypes = {
-    repository: PropTypes.string,
+    repository: PropTypes.number,
     repositories: PropTypes.arrayOf(PropTypes.object).isRequired,
-    author: PropTypes.string
+    author: PropTypes.string,
+    authors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = store => ({
     repository: store.commitState.repository,
     repositories: store.repositoryState.repositories,
     author: store.commitState.author,
+    authors: store.repositoryState.authors,
 });
 
 export default connect(mapStateToProps)(CommitFilterContainer);

@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Commit, Repository
-from .serializers import CommitSerializer, RepositorySerializer
+from .serializers import AuthorSerializer, CommitSerializer, RepositorySerializer
 from .github_api import get_commits
 
 
@@ -17,8 +17,9 @@ class RepositoryListCreate(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         repository = serializer.save(owner_id=self.request.user.id)
-        
-        latest_commits = get_commits(repository_name=repository.name, username=self.request.user.username)
+
+        latest_commits = get_commits(
+            repository_name=repository.name, username=self.request.user.username)
         if latest_commits is None:
             latest_commits = []
             # TODO do somethind
@@ -42,3 +43,10 @@ class CommitList(generics.ListAPIView):
     queryset = Commit.objects.all()
     serializer_class = CommitSerializer
     filterset_fields = ['author', 'repository']
+
+
+class AuthorList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Commit.objects.order_by('author').values('author').distinct()
+    serializer_class = AuthorSerializer
+    pagination_class = None

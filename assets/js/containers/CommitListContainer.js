@@ -54,7 +54,7 @@ CommitListContainer.propTypes = {
   commits: PropTypes.arrayOf(PropTypes.object).isRequired,
   count: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
-  repository: PropTypes.object,
+  repository: PropTypes.number,
   author: PropTypes.string,
   page: PropTypes.number.isRequired,
 };

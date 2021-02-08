@@ -2,7 +2,8 @@ import axios from 'axios';
 import { reset } from 'redux-form';
 import store from '../store';
 import {
-  createRepositorySuccess, getCommitsSuccess, updateCommitsFilters, getRepositoriesSuccess
+  createRepositorySuccess, getCommitsSuccess, updateCommitsFilters,
+  getRepositoriesSuccess, getAuthorsSuccess
 } from '../actions/CommitActions';
 
 export const getCommits = (params) => axios.get(`/api/commits/`, { params })
@@ -15,6 +16,11 @@ export const getRepositories = () => axios.get(`/api/repositories/`)
     store.dispatch(getRepositoriesSuccess(response));
   });
 
+export const getAuthors = () => axios.get(`/api/authors/`)
+  .then((response) => {
+    store.dispatch(getAuthorsSuccess(response));
+  });
+
 export const createRepository = (values, headers, formDispatch) => axios.post('/api/repositories/', values, { headers })
   .then((response) => {
     store.dispatch(createRepositorySuccess(response.data, true));
@@ -25,7 +31,7 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
     console.log(err);
   });
 
-function juju(filterFields) {
+function updateCommitsFiltersFormDispatcher(filterFields) {
   return (dispatch, getState) => {
     dispatch(updateCommitsFilters(filterFields));
     const {page, author, repository} = getState().commitState
@@ -34,22 +40,10 @@ function juju(filterFields) {
       page,
       repository
     })
-    // API.save(getState()).catch(() => {
-    //   alert('Something went wrong, try again later.');
-    //   dispatch({
-    //     type: REMOVE_VALUE,
-    //     value,
-    //   });
-    // });
   };
 }
 
 export const updateCommitsFiltersForm = (filterFields) => {
-  store.dispatch(juju(filterFields))
-  
-
-  // const secondState = getState();
-  // console.log(getState)
-  // getCommits(secondState)
+  store.dispatch(updateCommitsFiltersFormDispatcher(filterFields))
 }
 
