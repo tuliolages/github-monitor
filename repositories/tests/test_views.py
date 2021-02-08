@@ -8,16 +8,16 @@ from rest_framework import status
 from unittest.mock import patch
 
 from repositories.models import Repository, Commit
-from repositories.views import RepositoryCreate
+from repositories.views import RepositoryListCreate
 
 
-class RepositoryCreateViewTests(TestCase):
+class RepositoryListCreateViewTests(TestCase):
     fixtures = ['repositories_commits.json']
 
     def setUp(self):
         self.factory = APIRequestFactory()
         self.user = User.objects.get(pk=1)
-        self.view = RepositoryCreate.as_view()
+        self.view = RepositoryListCreate.as_view()
 
     def create_fake_commits(self):
         commits = [{
@@ -56,7 +56,7 @@ class RepositoryCreateViewTests(TestCase):
         new_repository = {'name': 'another-repo'}
 
         request = self.factory.post(
-            reverse('repositories:repositories-create'),
+            reverse('repositories:repositories-list-create'),
             new_repository,
             format='json'
         )
@@ -64,7 +64,7 @@ class RepositoryCreateViewTests(TestCase):
         response = self.view(request)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data, new_repository)
+        self.assertEqual(response.data['name'], new_repository['name'])
 
         saved_new_repository = Repository.objects.filter(
             name=new_repository['name'],
@@ -82,7 +82,7 @@ class RepositoryCreateViewTests(TestCase):
         new_repository = {'name': 'another-repo'}
 
         request = self.factory.post(
-            reverse('repositories:repositories-create'),
+            reverse('repositories:repositories-list-create'),
             new_repository,
             format='json'
         )
@@ -90,7 +90,7 @@ class RepositoryCreateViewTests(TestCase):
         response = self.view(request)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data, new_repository)
+        self.assertEqual(response.data['name'], new_repository['name'])
 
         saved_new_repository = Repository.objects.filter(
             name=new_repository['name'],
@@ -110,7 +110,7 @@ class RepositoryCreateViewTests(TestCase):
         new_repository = {'name': 'another-repo'}
 
         request = self.factory.post(
-            reverse('repositories:repositories-create'),
+            reverse('repositories:repositories-list-create'),
             new_repository,
             format='json'
         )
@@ -130,7 +130,7 @@ class RepositoryCreateViewTests(TestCase):
         new_repository = {'name': 'github-monitor'}
 
         request = self.factory.post(
-            reverse('repositories:repositories-create'),
+            reverse('repositories:repositories-list-create'),
             new_repository,
             format='json'
         )
