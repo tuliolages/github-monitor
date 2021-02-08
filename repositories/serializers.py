@@ -7,7 +7,7 @@ from .github_api import get_repository
 class RepositorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Repository
-        fields = ('name',)
+        fields = ('name', 'id')
 
     def validate(self, data):
 
@@ -33,7 +33,7 @@ class RepositorySerializer(serializers.ModelSerializer):
 
 
 class CommitSerializer(serializers.ModelSerializer):
-    repository = serializers.StringRelatedField(many=False)
+    repository = RepositorySerializer(many=False)
 
     class Meta:
         model = Commit

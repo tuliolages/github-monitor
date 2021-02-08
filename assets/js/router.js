@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Link, BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
+import CommitFilterContainer from './containers/CommitFilterContainer';
 import CommitListContainer from './containers/CommitListContainer';
 import RepoCreateContainer from './containers/RepoCreateContainer';
 
@@ -15,6 +16,9 @@ export default (
                         <Link to="/">
                             Github Monitor
                         </Link>
+                    </li>
+                    <li>
+                        <CommitFilterContainer />
                     </li>
                 </ul>
             </div>

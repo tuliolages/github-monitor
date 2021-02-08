@@ -29,7 +29,7 @@ const CommitList = (props) => {
                       {' '}
                       on
                       {' '}
-                      <span className="filter-link" onClick={() => updateFilters({repository__name: commit.repository})}>{commit.repository}</span>
+                      <span className="filter-link" onClick={() => updateFilters({repository: commit.repository.id})}>{commit.repository.name}</span>
                       {' '}
                       at
                       {' '}

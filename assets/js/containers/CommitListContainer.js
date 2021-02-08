@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import * as commitAPI from '../api/CommitAPI';
 import CommitList from '../components/CommitList';
@@ -10,31 +10,31 @@ class CommitListContainer extends React.Component {
     commitAPI.getCommits();
   }
 
-  handlePageClick({selected}) {
-    commitAPI.getCommits({
+  handlePageClick({ selected }) {
+    commitAPI.updateCommitsFiltersForm({
       page: (selected + 1),
       author: this.props.author,
-      repository__name: this.props.repository
+      repository: this.props.repository
     })
   }
 
   updateFilters(filterParams) {
-    commitAPI.getCommits({
+    commitAPI.updateCommitsFiltersForm({
       ...filterParams,
       page: 1
     })
   }
 
   render() {
-    const {commits, count, pageSize, page} = this.props;
+    const { commits, count, pageSize, page } = this.props;
     return (
       <div>
-        <CommitList commits={commits} updateFilters={this.updateFilters.bind(this)}/>
+        <CommitList commits={commits} updateFilters={this.updateFilters.bind(this)} />
         <ReactPaginate
-          pageCount={Math.ceil(count/pageSize)}
+          pageCount={Math.ceil(count / pageSize)}
           pageRangeDisplayed={2}
           onPageChange={this.handlePageClick.bind(this)}
-          forcePage={page-1}
+          forcePage={page - 1}
           breakLinkClassName={'page-link'}
           containerClassName={'pagination'}
           pageClassName={'page-item'}
@@ -54,7 +54,7 @@ CommitListContainer.propTypes = {
   commits: PropTypes.arrayOf(PropTypes.object).isRequired,
   count: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
-  repository: PropTypes.string,
+  repository: PropTypes.object,
   author: PropTypes.string,
   page: PropTypes.number.isRequired,
 };

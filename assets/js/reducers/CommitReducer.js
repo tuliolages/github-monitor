@@ -13,18 +13,23 @@ const initialState = {
 const commitReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_COMMITS_SUCCESS:
+      // console.log('GET_COMMITS_SUCCESS')
+      // console.log(action.payload.results)
       return {
         ...state,
         commits: Object.values(action.payload.results),
         pageSize: action.payload.page_size,
-        page: action.payload.page || 1,
         count: action.payload.count,
-        repository: action.payload.repository__name,
-        author: action.payload.author
       };
     case types.CREATE_REPOSITORY_SUCCESS: {
       return {...state, successMessage: action.payload.successMessage};
     }
+    case types.UPDATE_COMMITS_FILTERS:
+      console.log('UPDATE_COMMITS_FILTERS')
+      return {
+        ...state,
+        ...action.payload
+      }
     default:
       return state;
   }

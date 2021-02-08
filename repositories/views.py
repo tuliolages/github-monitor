@@ -4,14 +4,16 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Commit
+from .models import Commit, Repository
 from .serializers import CommitSerializer, RepositorySerializer
 from .github_api import get_commits
 
 
-class RepositoryCreate(generics.CreateAPIView):
+class RepositoryListCreate(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = RepositorySerializer
+    queryset = Repository.objects.all()
+    pagination_class = None
 
     def perform_create(self, serializer):
         repository = serializer.save(owner_id=self.request.user.id)
@@ -39,4 +41,4 @@ class CommitList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Commit.objects.all()
     serializer_class = CommitSerializer
-    filterset_fields = ['author', 'repository__name']
+    filterset_fields = ['author', 'repository']

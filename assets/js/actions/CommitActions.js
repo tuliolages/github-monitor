@@ -5,7 +5,17 @@ export const createRepositorySuccess = (response, successMessage) => ({
   payload: {response, successMessage},
 });
 
+export const getRepositoriesSuccess = response => ({
+  type: types.GET_REPOSITORIES_SUCCESS,
+  payload: response,
+});
+
 export const getCommitsSuccess = response => ({
   type: types.GET_COMMITS_SUCCESS,
   payload: response,
 });
+
+export const updateCommitsFilters = (filterFields) => ({
+  type: types.UPDATE_COMMITS_FILTERS,
+  payload: filterFields
+})
