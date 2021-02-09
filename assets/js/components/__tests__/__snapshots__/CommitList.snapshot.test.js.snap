@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render empty filter selects 1`] = `
+<div>
+  <div>
+    <div
+      className="card card-outline-secondary my-4"
+    >
+      <div
+        className="card-header"
+      >
+        Commit List
+      </div>
+      <div
+        className="card-body"
+      >
+        <p>
+          There are no commits
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render filter selects 1`] = `
+<div>
+  <div>
+    <div
+      className="card card-outline-secondary my-4"
+    >
+      <div
+        className="card-header"
+      >
+        Commit List
+      </div>
+      <div
+        className="card-body"
+      >
+        <div
+          key="4f9ff7c6e4d26dfc50d69c3ddbc49717928a9e92"
+        >
+          <div
+            className="avatar"
+          >
+            <img
+              alt="unknown"
+              className="img-author"
+              src=""
+            />
+          </div>
+          <div
+            className="commit-details"
+          >
+            <p>
+              add github_external_api tests
+            </p>
+            <small
+              className="text-muted"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                unknown
+              </a>
+               
+              authored
+               
+              on
+               
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                github-monitor
+              </a>
+               
+              at
+               
+              2021-02-06T20:13:56-03:00
+            </small>
+            <hr />
+          </div>
+        </div>
+        <div
+          key="65dfa477eefd6a4c98ae781740b042b86a454673"
+        >
+          <div
+            className="avatar"
+          >
+            <img
+              alt="unknown"
+              className="img-author"
+              src=""
+            />
+          </div>
+          <div
+            className="commit-details"
+          >
+            <p>
+              creates initial view tests and fixtures
+            </p>
+            <small
+              className="text-muted"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                unknown
+              </a>
+               
+              authored
+               
+              on
+               
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                github-monitor
+              </a>
+               
+              at
+               
+              2021-02-06T17:04:29-03:00
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

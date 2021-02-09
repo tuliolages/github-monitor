@@ -17,15 +17,13 @@ export default (
                             Github Monitor
                         </Link>
                     </li>
-                    <li>
-                        <CommitFilterContainer />
-                    </li>
                 </ul>
             </div>
 
             <div id="page-content-wrapper">
                 <div className="container-fluid">
                     <RepoCreateContainer />
+                    <CommitFilterContainer />
                     <Switch>
                         <Route path="/" exact component={CommitListContainer} />
                     </Switch>

@@ -20,7 +20,7 @@ class CommitFilterContainer extends React.Component {
     }
 
     render() {
-        const {author, authors,repository, repositories} = this.props
+        const {author, authors, repository, repositories} = this.props
         return (
             <div>
                 <CommitFilter 

@@ -27,20 +27,26 @@ const CommitFilter = (props) => {
 
       <div className="card-body">
         <div className="form-group">
-          <h4>Repositories</h4>
-          <Select
-            value={currentRepositoryOption}
-            onChange={props.onChange('repository')}
-            options={repositoryOptions}
-          />
-          <br />
-          
-          <h4>Authors</h4>
-          <Select
-            value={currentauthorOption}
-            onChange={props.onChange('author')}
-            options={authorOptions}
-          />
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="repositories">Repositories</label>
+              <Select
+                id="repositories"
+                value={currentRepositoryOption}
+                onChange={props.onChange('repository')}
+                options={repositoryOptions}
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="authors">Authors</label>
+              <Select
+                id="authors"
+                value={currentauthorOption}
+                onChange={props.onChange('author')}
+                options={authorOptions}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
