@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Link, BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import CommitFilterContainer from './containers/CommitFilterContainer';
 import CommitListContainer from './containers/CommitListContainer';
 import RepoCreateContainer from './containers/RepoCreateContainer';
+import RepositoryCountContainer from './containers/RepositoryCountContainer';
 
 export default (
   <Router>
@@ -23,9 +23,9 @@ export default (
       <div id="page-content-wrapper">
         <div className="container-fluid">
           <RepoCreateContainer />
-          <CommitFilterContainer />
           <Switch>
             <Route path="/" exact component={CommitListContainer} />
+            <Route path="/count" exact component={RepositoryCountContainer} />
           </Switch>
         </div>
       </div>

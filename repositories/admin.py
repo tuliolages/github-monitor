@@ -7,6 +7,8 @@ class CommitAdmin(admin.ModelAdmin):
     list_filter = ('repository',)
     list_display = ('message', 'date')
 
+class RepositoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'owner')
 
 admin.site.register(Commit, CommitAdmin)
-admin.site.register(Repository)
+admin.site.register(Repository, RepositoryAdmin)

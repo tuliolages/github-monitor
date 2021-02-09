@@ -31,6 +31,12 @@ class RepositorySerializer(serializers.ModelSerializer):
 
         return data
 
+class RepositoryCountSerializer(serializers.ModelSerializer):
+    count = serializers.IntegerField()
+    
+    class Meta:
+        model = Repository
+        fields = ('name', 'count')
 
 class CommitSerializer(serializers.ModelSerializer):
     repository = RepositorySerializer(many=False)

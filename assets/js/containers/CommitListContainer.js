@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import * as commitAPI from '../api/CommitAPI';
 import CommitList from '../components/CommitList';
+import CommitFilterContainer from './CommitFilterContainer';
 
 class CommitListContainer extends React.Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class CommitListContainer extends React.Component {
     } = this.props;
     return (
       <div>
+        <CommitFilterContainer />
         <CommitList commits={commits} updateFilters={this.updateFilters.bind(this)} />
         <ReactPaginate
           pageCount={Math.ceil(count / pageSize)}
