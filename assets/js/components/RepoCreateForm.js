@@ -1,26 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 const renderField = ({
-  input, placeholder, className, type, meta: {touched, error, invalid},
+  input, placeholder, className, type, meta: { touched, error, invalid },
 }) => (
-    <div>
-      <input
-        {...input}
-        placeholder={placeholder}
-        className={`${className} ${touched && invalid ? 'is-invalid' : ''}`}
-        type={type}
-      />
-      {touched
-        && ((error && (
-          <div className="invalid-feedback">
-            {error}
-          </div>
-        )))
-      }
-    </div>
-  );
+  <div>
+    <input
+      {...input}
+      placeholder={placeholder}
+      className={`${className} ${touched && invalid ? 'is-invalid' : ''}`}
+      type={type}
+    />
+    {touched
+      && ((error && (
+        <div className="invalid-feedback">
+          {error}
+        </div>
+      )))
+    }
+  </div>
+);
 
 renderField.propTypes = {
   input: PropTypes.object.isRequired,
@@ -47,7 +47,7 @@ const RepoCreateForm = (props) => {
         && (
           <div className="alert alert-danger" role="alert">
             {errorMessages.map((errorMessage, index) => (
-              <div key={'error-message-'+index}>
+              <div key={'error-message-' + index}>
                 {errorMessage}
               </div>
             ))}
@@ -81,11 +81,11 @@ RepoCreateForm.propTypes = {
   submitting: PropTypes.bool.isRequired,
   showSuccessMessage: PropTypes.bool.isRequired,
   showErrorMessage: PropTypes.bool.isRequired,
-  errorMessages: PropTypes.arrayOf(PropTypes.string)
+  errorMessages: PropTypes.arrayOf(PropTypes.string),
 };
 
 const validate = (values) => {
-  const {username} = document.getElementById('main').dataset;
+  const { username } = document.getElementById('main').dataset;
   const errors = {};
   if (!values.name || !values.name.startsWith(`${username}/`)) {
     errors.name = `Repository must belong to you (eg: ${username}/repo-name)`;

@@ -11,22 +11,25 @@ class CommitListContainer extends React.Component {
   }
 
   handlePageClick({ selected }) {
+    const { author, repository } = this.props;
     commitAPI.updateCommitsFiltersForm({
       page: (selected + 1),
-      author: this.props.author,
-      repository: this.props.repository
-    })
+      author,
+      repository,
+    });
   }
 
   updateFilters(filterParams) {
     commitAPI.updateCommitsFiltersForm({
       ...filterParams,
-      page: 1
-    })
+      page: 1,
+    });
   }
 
   render() {
-    const { commits, count, pageSize, page } = this.props;
+    const {
+      commits, count, pageSize, page,
+    } = this.props;
     return (
       <div>
         <CommitList commits={commits} updateFilters={this.updateFilters.bind(this)} />
@@ -35,15 +38,15 @@ class CommitListContainer extends React.Component {
           pageRangeDisplayed={2}
           onPageChange={this.handlePageClick.bind(this)}
           forcePage={page - 1}
-          breakLinkClassName={'page-link'}
-          containerClassName={'pagination'}
-          pageClassName={'page-item'}
-          pageLinkClassName={'page-link'}
-          previousClassName={'page-item'}
-          previousLinkClassName={'page-link'}
-          nextClassName={'page-item'}
-          nextLinkClassName={'page-link'}
-          activeClassName={'active'}
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          activeClassName="active"
         />
       </div>
     );
@@ -59,13 +62,13 @@ CommitListContainer.propTypes = {
   page: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   commits: store.commitState.commits,
   count: store.commitState.count,
   pageSize: store.commitState.pageSize,
   repository: store.commitState.repository,
   author: store.commitState.author,
-  page: store.commitState.page
+  page: store.commitState.page,
 });
 
 export default connect(mapStateToProps)(CommitListContainer);

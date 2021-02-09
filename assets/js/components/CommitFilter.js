@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
-import Select from 'react-select'
-
+import Select from 'react-select';
 
 const CommitFilter = (props) => {
-  const { repository, repositories, author, authors } = props
+  const {
+    repository, repositories, author, authors
+  } = props;
 
   const repositoryOptions = [
     { label: 'All' },
     ...repositories.map(({ name, id }) => ({ label: name, value: id }))
-  ]
-  const currentRepositoryOption = (repositoryOptions || []).find(({ value }) => value === repository) || repositoryOptions[0]
+  ];
+  const currentRepositoryOption = (
+    repositoryOptions || []
+  ).find(({ value }) => value === repository) || repositoryOptions[0];
 
   const authorOptions = [
     { label: 'All' },
     ...authors.map(({ author }) => ({ label: author, value: author }))
-  ]
-  const currentauthorOption = (authorOptions || []).find(({ value }) => value === author) || repositoryOptions[0]
+  ];
+  const currentauthorOption = (
+    authorOptions || []
+  ).find(({ value }) => value === author) || repositoryOptions[0];
 
   return (
     <div className="card card-outline-secondary my-4">

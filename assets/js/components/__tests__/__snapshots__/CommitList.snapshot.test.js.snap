@@ -58,23 +58,23 @@ exports[`Render filter selects 1`] = `
             <small
               className="text-muted"
             >
-              <a
-                href="#"
+              <span
+                className="filter-link"
                 onClick={[Function]}
               >
                 unknown
-              </a>
+              </span>
                
               authored
                
               on
                
-              <a
-                href="#"
+              <span
+                className="filter-link"
                 onClick={[Function]}
               >
                 github-monitor
-              </a>
+              </span>
                
               at
                
@@ -104,23 +104,23 @@ exports[`Render filter selects 1`] = `
             <small
               className="text-muted"
             >
-              <a
-                href="#"
+              <span
+                className="filter-link"
                 onClick={[Function]}
               >
                 unknown
-              </a>
+              </span>
                
               authored
                
               on
                
-              <a
-                href="#"
+              <span
+                className="filter-link"
                 onClick={[Function]}
               >
                 github-monitor
-              </a>
+              </span>
                
               at
                

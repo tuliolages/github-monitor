@@ -9,7 +9,7 @@ const initialState = {
   showErrorMessage: false,
   errorMessages: null,
   repository: null,
-  author: null
+  author: null,
 };
 
 const commitReducer = (state = initialState, action) => {
@@ -26,7 +26,7 @@ const commitReducer = (state = initialState, action) => {
         ...state,
         showSuccessMessage: action.payload.showSuccessMessage,
         errorMessages: null,
-        showErrorMessage: false
+        showErrorMessage: false,
       };
     }
     case types.CREATE_REPOSITORY_ERROR: {
@@ -34,14 +34,14 @@ const commitReducer = (state = initialState, action) => {
         ...state,
         showErrorMessage: action.payload.showErrorMessage,
         errorMessages: action.payload.response.non_field_errors,
-        showSuccessMessage: false
+        showSuccessMessage: false,
       };
     }
     case types.UPDATE_COMMITS_FILTERS:
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
     default:
       return state;
   }

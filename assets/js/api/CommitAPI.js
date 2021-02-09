@@ -3,7 +3,7 @@ import { reset } from 'redux-form';
 import store from '../store';
 import {
   createRepositorySuccess, getCommitsSuccess, updateCommitsFilters,
-  getRepositoriesSuccess, getAuthorsSuccess, createRepositoryError
+  getRepositoriesSuccess, getAuthorsSuccess, createRepositoryError,
 } from '../actions/CommitActions';
 
 export const getCommits = (params) => axios.get(`/api/commits/`, { params })
@@ -25,9 +25,9 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
   .then((response) => {
     store.dispatch(createRepositorySuccess(response.data, true));
     formDispatch(reset('repoCreate'));
-    getCommits()
-    getRepositories()
-    getAuthors()
+    getCommits();
+    getRepositories();
+    getAuthors();
   }).catch((error) => {
     const err = error.response;
     console.log(err);
@@ -37,16 +37,15 @@ export const createRepository = (values, headers, formDispatch) => axios.post('/
 function updateCommitsFiltersFormDispatcher(filterFields) {
   return (dispatch, getState) => {
     dispatch(updateCommitsFilters(filterFields));
-    const {page, author, repository} = getState().commitState
+    const { page, author, repository } = getState().commitState
     getCommits({
       author,
       page,
-      repository
-    })
+      repository,
+    });
   };
 }
 
 export const updateCommitsFiltersForm = (filterFields) => {
-  store.dispatch(updateCommitsFiltersFormDispatcher(filterFields))
+  store.dispatch(updateCommitsFiltersFormDispatcher(filterFields));
 }
-

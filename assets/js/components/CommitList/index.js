@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CommitList = (props) => {
-  const {commits, updateFilters} = props;
+  const {
+    commits, updateFilters
+  } = props;
   return (
     <div>
       {(
@@ -23,13 +25,13 @@ const CommitList = (props) => {
                       {commit.message}
                     </p>
                     <small className="text-muted">
-                      <a href="#" onClick={() => updateFilters({author: commit.author})}>{commit.author}</a>
+                      <span className="filter-link" onClick={() => updateFilters({author: commit.author})}>{commit.author}</span>
                       {' '}
                       authored
                       {' '}
                       on
                       {' '}
-                      <a href="#" onClick={() => updateFilters({repository: commit.repository.id})}>{commit.repository.name}</a>
+                      <span className="filter-link" onClick={() => updateFilters({repository: commit.repository.id})}>{commit.repository.name}</span>
                       {' '}
                       at
                       {' '}

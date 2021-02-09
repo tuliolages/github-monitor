@@ -4,18 +4,19 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --config webpack.config.js --watch",
-    "lint": "eslint assets",
+    "lint": "eslint assets/js",
     "test": "jest"
   },
   "homepage": "https://github.com/vintasoftware/github-monitor#readme",
   "dependencies": {
-    "axios": "^0.20.0",
     "@babel/core": "^7.12.13",
-    "babel-core": "7.0.0-bridge.0",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
+    "axios": "^0.20.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-paginate": "^7.0.0",

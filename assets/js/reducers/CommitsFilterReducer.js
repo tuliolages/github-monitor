@@ -2,7 +2,7 @@ import * as types from '../actions/ActionTypes';
 
 const initialState = {
   repositories: [],
-  authors: []
+  authors: [],
 };
 
 const commitsFilterReducer = (state = initialState, action) => {
